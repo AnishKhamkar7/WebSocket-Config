@@ -8,5 +8,7 @@ const gameManager = new GameManager();
 wss.on('connection', function connection(ws) {
 
   gameManager.addUser(ws)
+  wss.on('disconnect',() =>{
+    gameManager.removeUser(ws)
+  })
 });
-// console.log("Server RUNNNING")
